@@ -1,0 +1,3 @@
+Hello, my name is Yuri and I am a NodeJS developer!!
+I want to eat McDonalds
+I want to eat McDonalds
