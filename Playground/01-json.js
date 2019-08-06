@@ -1,14 +1,13 @@
 const fs = require('fs');
 
-//const book = {
-//    title: 'Assim falou Zaratrusta',
-//    author: 'Nietzsche'
-//};
+const book = {
+    title: 'Assim falou Zaratrusta',
+    author: 'Nietzsche'
+};
 
-//const bookJSON = JSON.stringify(book);
+const bookJSON = JSON.stringify(book);
 
-//fs.writeFileSync('01-json.json', bookJSON);
-
+fs.writeFileSync('02-json.json', bookJSON);
 
 const dataBuffer = fs.readFileSync('01-json.json');
 const dataJSON = dataBuffer.toString();
