@@ -1,0 +1,1 @@
+console.log('Alo galera, o JS ta OK!!')
