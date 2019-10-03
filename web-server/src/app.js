@@ -22,13 +22,33 @@ app.get('/about', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
+    if (!req.query.address) {
+        return res.send({
+            error: 'You must need to provide a address'
+        });
+
+    }    
+
     res.send({
-        location: 'São Paulo',
+        address: req.query.address,
         forecast: {
             temperature: 24.34,
             summary: 'TA FRIO E CALOR AO MESMO TEMPO PORRA'
         }
     })
+})
+
+app.get('/produtos', (req, res) => {
+    if (!req.query.search) {
+        return res.send({
+            error: 'You need to provide a term'
+        });
+    }
+
+
+    res.send({
+        products: '[]'
+    });
 })
 
 
