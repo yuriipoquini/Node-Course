@@ -1,6 +1,9 @@
 const path = require('path');
 const express = require('express');
 
+const geocode = require('./utils/geocode.js')
+const forecast = require('./utils/forecast.js')
+
 const app = express();
 const publicDirectoryPath = path.join(__dirname, '../public');
 
@@ -27,16 +30,32 @@ app.get('/weather', (req, res) => {
             error: 'You must need to provide a address'
         });
 
-    }    
+    }
 
-    res.send({
-        address: req.query.address,
-        forecast: {
-            temperature: 24.34,
-            summary: 'TA FRIO E CALOR AO MESMO TEMPO PORRA'
+
+    address = req.query.address;
+    geocode(address, (error, {latitude, longitude , location }) => {
+        if (error) {
+            return res.send({
+                error: 'ERROR :/'
+            })
         }
+
+        forecast(latitude, longitude, (nError, nData) => {
+            if (nError) {
+                return res.send({
+                    error: 'ERROR :/'
+                })
+            }
+
+            return res.send({
+                location: location,
+                temperature: nData
+            })
+        })
     })
 })
+
 
 app.get('/produtos', (req, res) => {
     if (!req.query.search) {
