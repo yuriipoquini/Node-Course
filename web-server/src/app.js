@@ -34,17 +34,17 @@ app.get('/weather', (req, res) => {
 
 
     address = req.query.address;
-    geocode(address, (error, {latitude, longitude , location } = {}) => {
+    geocode(address, (error, { latitude, longitude, location } = {}) => {
         if (error) {
             return res.send({
-                error: 'ERROR :/'
+                error: 'Failed to find location, please try another one'
             })
         }
 
         forecast(latitude, longitude, (nError, nData) => {
             if (nError) {
                 return res.send({
-                    error: 'ERROR :/'
+                    error: 'Failed to find location, please try another one'
                 })
             }
 
