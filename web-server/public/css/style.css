@@ -1,3 +1,10 @@
-h1{
-    color: chocolate;
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: darkgoldenrod;
 }
+
+.main-content h1{
+    color: cadetblue;
+    top: 30px;
+}
+
