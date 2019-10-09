@@ -1,10 +1,12 @@
 const path = require('path');
 const express = require('express');
 
-const geocode = require('./utils/geocode.js')
-const forecast = require('./utils/forecast.js')
+const geocode = require('./utils/geocode.js');
+const forecast = require('./utils/forecast.js');
 
 const app = express();
+const port = process.env.PORT || 3000;
+
 const publicDirectoryPath = path.join(__dirname, '../public');
 
 app.set('view engine', 'hbs');
@@ -76,4 +78,4 @@ app.get('*', (req, res) => {
     res.send('Nao achei porra nenhuma')
 })
 
-app.listen(3000);
+app.listen(port);
