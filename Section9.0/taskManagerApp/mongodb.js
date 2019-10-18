@@ -12,8 +12,35 @@ MongodbClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology
 
     const db = client.db(databaseName);
 
-    db.collection('users').insertOne({
-        name: 'Yuri',
+    // db.collection('users').insertOne({
+    //     name: 'Yuri',
+    //     age: 21
+    // });
+
+    db.collection('users').insertMany([{
+        name: 'Leo',
+        age: 20
+    }, {
+        name: 'Malu',
         age: 21
-    });
+    }])
+
+    db.collection('tasks').insertMany([{
+            description: 'Buy chocolates',
+            completed: true
+        }, {
+            description: 'Eat chocolates',
+            completed: false
+        }, {
+            description: 'Drink water',
+            completed: false
+        }
+
+    ], (error, result) => {
+        if (error) {
+            console.log('Unable to insert documents');
+        }
+
+        console.log(result.ops);
+    })
 });
